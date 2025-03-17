@@ -1,5 +1,5 @@
+![](Titanic.png)
 # Titanic
-![Titanic]("Titanic.png")
 ### Linux · Easy
 #### from https://app.hackthebox.com/machines/648
 > **IP 10.10.11.55**
@@ -15,5 +15,20 @@ PORT   STATE SERVICE VERSION
 80/tcp open  http    Apache httpd 2.4.52
 |_http-title: Did not follow redirect to http://titanic.htb/
 |_http-server-header: Apache/2.4.52 (Ubuntu)
+
 Service Info: Host: titanic.htb; OS: Linux; CPE: cpe:/o:linux:linux_kernel
+☠️$ sudo nmap --script=vuln -p80,22   10.10.11.55   
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http
+|_http-csrf: Couldn't find any CSRF vulnerabilities.
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+
+☠️$ sudo sh -c 'echo "10.10.11.55    titanic.htb" >> /etc/hosts'
+```
+#### ok 让我们直接看web页面
+###`子域名扫描`
+```
+
 ```
